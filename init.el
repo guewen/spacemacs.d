@@ -315,16 +315,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-;;; the following is only needed if you install org-page manually
-  ;; (setq op/repository-directory "~/org-page-blog")
-  ;; (setq op/site-domain "http://your.personal.site.com/")
-;;; for commenting, you can choose either disqus, duoshuo or hashover
-  ;; (setq op/personal-disqus-shortname "your_disqus_shortname")
-  ;; (setq op/personal-duoshuo-shortname "your_duoshuo_shortname")
-  ;; (setq op/hashover-comments t)
-;;; the configuration below are optional
-  ;; (setq op/personal-google-analytics-id "your_google_analytics_id")
-
   (spacemacs|define-custom-layout "Blog"
     :binding "b"
     :body
@@ -332,16 +322,6 @@ you should place your code here."
       (call-interactively 'op/new-post)))
 
   (setq python-shell-interpreter "ipython")
-
- (when (configuration-layer/layer-usedp 'blog)
-   (setq op/personal-github-link "https://github.com/guewen/")
-   (setq op/repository-directory "~/org-blog/")
-   (setq op/site-domain "https://guewen.github.io/")
-;;    ;; This two are optional , only if you want have a custom theme
-;;    ;; (setq op/theme-root-directory "~/.spacemacs.d/blog/themes/")
-;;    ;; (setq op/theme 'just_right)
-   (setq op/site-main-title "Guewen Baconnier")
-   (setq op/site-sub-title "???")
 
   )
 

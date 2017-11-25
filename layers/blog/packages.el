@@ -33,65 +33,27 @@
   '(
     ;;(org-page :location local)
     org-page
-    ht
-    mustache
     ))
-  "The list of Lisp packages required by the blog layer.
 
-Each entry is either:
-
-1. A symbol, which is interpreted as a package to be installed, or
-
-2. A list of the form (PACKAGE KEYS...), where PACKAGE is the
-    name of the package to be installed or loaded, and KEYS are
-    any number of keyword-value-pairs.
-
-    The following keys are accepted:
-
-    - :excluded (t or nil): Prevent the package from being loaded
-      if value is non-nil
-
-    - :location: Specify a custom installation location.
-      The following values are legal:
-
-      - The symbol `elpa' (default) means PACKAGE will be
-        installed using the Emacs package manager.
-
-      - The symbol `local' directs Spacemacs to load the file at
-        `./local/PACKAGE/PACKAGE.el'
-
-      - A list beginning with the symbol `recipe' is a melpa
-        recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
-
+;; see https://github.com/wjain/spacemacs.d/blob/master/layers/myorg/packages.el#L80
 (defun blog/init-org-page ()
+
   (use-package org-page
-    :commands (op/do-publication op/new-post op/new-repository)
+    :defer t
+    ;; :commands (op/do-publication op/new-post op/new-repository)
     :init
-    (spacemacs/set-leader-keys
-      "opo" '(lambda () (interactive)
-               (magit-status op/repository-directory))
-      "opp" '(lambda() (interactive)
-               (let ((org-html-htmlize-output-type 'css))
-                 (op/do-publication t nil t nil))
-               (find-file op/repository-directory))
-      "opP" '(lambda() (interactive)
-               (let ((org-html-htmlize-output-type 'css))
-                 (op/do-publication t t org-page-built-directory))))
-    (setq org-html-doctype "html5")
-    (setq org-html-html5-fancy t)
-    (defface strike-through
-      '((t :strike-through t))
-      "Basic strike-through face."
-      :group 'basic-faces)
-    (unless (file-exists-p org-page-built-directory)
-      (make-directory org-page-built-directory))
-    :config
-(push '("+" ,(if (featurep 'xemacs) 'org-table strike-through)) org-emphasis-alist)))
-
-(defun blog/init-mustache ()
-  (use-package mustache))
-
-(defun blog/init-ht ()
-  (use-package ht))
+    (progn
+      (require 'org-page)
+        (setq op/repository-directory "~/guewen.github.io/")
+        (setq op/site-domain "https://guewen.github.io/")
+        (setq op/personal-github-link "https://github.com/guewen/")
+        ;; This two are optional, only needed for a custom theme
+        ;; (setq op/theme-root-directory "~/.spacemacs.d/layers/blog/themes/")
+        ;; (setq op/theme 'jain)
+        (setq op/site-main-title "Guewen Baconnier")
+        (setq op/site-sub-title "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧")
+      )
+    )
+  )
 
 ;;; packages.el ends here
