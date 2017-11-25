@@ -323,6 +323,8 @@ you should place your code here."
 
   (setq python-shell-interpreter "ipython")
 
+  (setq user-mail-address "guewen@gmail.com")
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
