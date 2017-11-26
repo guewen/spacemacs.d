@@ -38,6 +38,7 @@
 ;; see https://github.com/wjain/spacemacs.d/blob/master/layers/myorg/packages.el#L80
 (defun blog/init-org-page ()
 
+  (spacemacs/declare-prefix "ab" "blog")
   (use-package org-page
     :defer t
     ;; :commands (op/do-publication op/new-post op/new-repository)
@@ -49,9 +50,12 @@
         (setq op/personal-github-link "https://github.com/guewen/")
         ;; This two are optional, only needed for a custom theme
         ;; (setq op/theme-root-directory "~/.spacemacs.d/layers/blog/themes/")
-        ;; (setq op/theme 'jain)
+        ;; (setq op/theme 'kactus)
         (setq op/site-main-title "Guewen Baconnier")
         (setq op/site-sub-title "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧")
+        (spacemacs/set-leader-keys
+          "abp" 'op/do-publication-and-preview-site
+          "abP" 'op/do-publication)
       )
     )
   )
