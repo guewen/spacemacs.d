@@ -32,6 +32,10 @@ values."
    dotspacemacs-configuration-layers
    '(
      javascript
+     csv
+     yaml
+     html
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -44,6 +48,7 @@ values."
      git
      markdown
      org
+     latex
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -326,6 +331,22 @@ you should place your code here."
   (setq python-shell-interpreter "ipython")
 
   (setq user-mail-address "guewen@gmail.com")
+
+  (load-library "find-lisp")
+  (setq org-agenda-files
+    (find-lisp-find-files "~/org/" "\.org$"))
+  (setq org-capture-templates
+        '(("t" "Task" entry (file+headline "~/org/capture/tasks.org" "Inbox")
+           "* TODO %?\n  %i\n  %a")
+          ("j" "Journal" entry (file+datetree "~/org/capture/journal.org")
+           "* %?\nEntered on %U\n  %i\n  %a")))
+  (setq org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 9)))
+  (setq org-complete-tags-always-offer-all-agenda-tags t)
+  (setq org-todo-keywords
+        '((sequence "IDEA" "TODO" "STARTED" "REVIEW" "|" "DONE" "DELEGATED" "CANCELED")))
+  (custom-set-variables
+   '(markdown-command "/usr/bin/pandoc"))
 
   )
 
