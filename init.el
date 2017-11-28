@@ -334,9 +334,8 @@ you should place your code here."
 
   (setq user-mail-address "guewen@gmail.com")
 
-  (load-library "find-lisp")
   (setq org-agenda-files
-    (find-lisp-find-files "~/org/" "\.org$"))
+        '("~/org/weekly.org"  "~/org/capture/tasks.org" "~/org/capture/journal.org"))
   (setq org-capture-templates
         '(("t" "Task" entry (file+headline "~/org/capture/tasks.org" "Inbox")
            "* TODO %?\n  %i\n  %a")
