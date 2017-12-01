@@ -338,6 +338,8 @@ you should place your code here."
     (when (y-or-n-p "Hi, do you want to create a new post?")
       (call-interactively 'op/new-post)))
 
+  (setq confluence-url "https://confluence.camptocamp.com/confluence/rpc/xmlrpc")
+
   (setq python-shell-interpreter "ipython")
 
   (setq user-mail-address "guewen@gmail.com")
