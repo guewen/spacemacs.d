@@ -87,6 +87,11 @@ values."
    ;; Spacemacs and never uninstall them. (default is `used-only')
    dotspacemacs-install-packages 'used-only))
 
+(spacemacs|use-package-add-hook org
+  :pre-init
+  (package-initialize)
+)
+
 (defun dotspacemacs/init ()
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
