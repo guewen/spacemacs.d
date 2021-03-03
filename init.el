@@ -173,7 +173,8 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    ;; Default: Source Code Pro
    dotspacemacs-default-font '("Cascadia Code PL"
-                               :size 13
+                               ;; when set, DPI is not automatically adjusted
+                               ;;:size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
